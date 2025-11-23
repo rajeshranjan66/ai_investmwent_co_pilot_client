@@ -21,7 +21,6 @@ Developer-focused overview of the MCP (Model Context Protocol) HTTP servers that
 ## Environment and dependencies
 - Python 3.10+ with dependencies in `mcp_http_server_project/requirements.txt` (FastAPI, FastMCP, yfinance, statsmodels, cachetools, LangChain community integrations, etc.).【F:mcp_http_server/mcp_http_server_project/requirements.txt†L1-L61】
 - Required environment variables for full functionality:
-  - `ALPHA_VANTAGE_API_KEY` for Alpha Vantage tools.【F:mcp_http_server/mcp_http_server_project/mcp_http_stock_server_alphavantage.py†L33-L64】
   - `TAVILY_API_KEY` for web search; the code falls back to a hardcoded dev key but recommends setting your own.【F:mcp_http_server/mcp_http_server_project/mcp_stock_server_http_yfinance.py†L1453-L1476】
   - `FRED_API_KEY` for FRED macroeconomic data access.【F:mcp_http_server/mcp_http_server_project/mcp_stock_server_http_yfinance.py†L1483-L1505】
 
@@ -37,10 +36,7 @@ Developer-focused overview of the MCP (Model Context Protocol) HTTP servers that
    ```bash
    uvicorn mcp_stock_server_http_yfinance:app --host 0.0.0.0 --port 8001 --log-level debug
    ```
-4. Start the Alpha Vantage HTTP MCP server (port 8002 by default):
-   ```bash
-   uvicorn mcp_http_stock_server_alphavantage:app --host 0.0.0.0 --port 8002 --log-level debug
-   ```
+
 
 Each server exposes its MCP tools via the HTTP interface provided by FastMCP; a quick health probe is available at `/health` on the corresponding port.
 
