@@ -1,4 +1,4 @@
-# AI Investment Co-Pilot HTTP Servers
+# AI Investment Co-Pilot MCP HTTP Servers
 
 Developer-focused overview of the MCP (Model Context Protocol) HTTP servers that expose stock, macroeconomic, and web-search tools over FastAPI.
 
