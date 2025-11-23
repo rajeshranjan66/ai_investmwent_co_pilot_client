@@ -18,10 +18,6 @@ Developer-focused overview of the MCP (Model Context Protocol) HTTP servers that
   - **Search and macro data**: `crawl_web_page` integrates the Tavily API, while `get_fred_macro_data` and `get_international_macro_data` fetch macroeconomic series from FRED and other sources using API keys read from the environment.【F:mcp_http_server/mcp_http_server_project/mcp_stock_server_http_yfinance.py†L1431-L1508】
 - A custom `/health` route is registered for uptime checks, mirroring the Uvicorn entrypoint at port 8001 by default.【F:mcp_http_server/mcp_http_server_project/mcp_stock_server_http_yfinance.py†L1768-L1790】
 
-### Alpha Vantage MCP HTTP server
-- `mcp_http_stock_server_alphavantage.py` provides an alternate MCP server that proxies Alpha Vantage endpoints for equities, FX, crypto, and technical indicators, again exposing `app = mcp.http_app()` for HTTP serving.【F:mcp_http_server/mcp_http_server_project/mcp_http_stock_server_alphavantage.py†L1-L160】【F:mcp_http_server/mcp_http_server_project/mcp_http_stock_server_alphavantage.py†L200-L260】【F:mcp_http_server/mcp_http_server_project/mcp_http_stock_server_alphavantage.py†L595-L623】
-- Tools enforce timeouts and structured error handling around Alpha Vantage responses and share the same `/health` check pattern as the YFinance server.【F:mcp_http_server/mcp_http_server_project/mcp_http_stock_server_alphavantage.py†L40-L160】【F:mcp_http_server/mcp_http_server_project/mcp_http_stock_server_alphavantage.py†L599-L623】
-
 ## Environment and dependencies
 - Python 3.10+ with dependencies in `mcp_http_server_project/requirements.txt` (FastAPI, FastMCP, yfinance, statsmodels, cachetools, LangChain community integrations, etc.).【F:mcp_http_server/mcp_http_server_project/requirements.txt†L1-L61】
 - Required environment variables for full functionality:
